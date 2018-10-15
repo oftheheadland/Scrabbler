@@ -1,4 +1,5 @@
 $('#form').on('submit', function (e) {
+    $('#loading').show()
     $('#resultsHeader').html('');
     $('#numberOfWords').html('');
     $('#results').html('');
@@ -70,7 +71,6 @@ function handleData(data) {
             $('#results').append(array + '<br>')
         }
         counter++;
-
     });
-
+    $('#loading').hide()
 }
