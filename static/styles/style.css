@@ -1,0 +1,14 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+background: #f2f2f2;
+font-family: 'Open Sans', sans-serif;
+}
+
+#search{
+    text-transform: uppercase;
+    font-size: 27px;
+    font-weight: bold;
+    color: rgb(50, 138, 197);
+    letter-spacing: 0.10em;
+}
