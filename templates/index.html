@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+	<title>Scrabbler</title>
+	<style type="text/css">
+		* {
+			font-family: sans-serif;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+
+
+	<style>
+		@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+	body{
+	background: #f2f2f2;
+	font-family: 'Open Sans', sans-serif;
+	}
+
+	#search{
+		text-transform: uppercase;
+		font-size: 27px;
+		font-weight: bold;
+		color: rgb(50, 138, 197);
+		letter-spacing: 0.10em;
+	}
+
+</style>
+</head>
+
+<body>
+	<h1>Scrabbler</h1>
+	<form method="post" id="form">
+		<label for="search">Enter letters : </label>
+		<input type="text" id="search" name="characters" autofocus autocomplete="off">
+		<button>Search</button>
+	</form>
+
+
+	<p id="resultsHeader"></p>
+	<p id="numberOfWords"></p>
+	<p id="results"></p>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script>
+		$('#form').on('submit', function (e) {
+			$('#resultsHeader').html('');
+			$('#numberOfWords').html('');
+			$('#results').html('');
+			var query = $('#search').val();
+			e.preventDefault();
+			$.ajax({
+				url: 'http://127.0.0.1:5000/scrabble/',
+				data: { 'letters': query },
+				method: 'POST',
+				success: function (data) {
+					$('#search').val('');
+					$('#resultsHeader').html('Possible words for ' + query.toUpperCase() + ': <br>')
+					handleData(data);
+				}
+			})
+		})
+
+		String.prototype.replaceAll = function (search, replacement) {
+			var target = this;
+			return target.replace(new RegExp(search, 'g'), replacement);
+		};
+
+		function handleData(data) {
+			console.log(data)
+			// Convert string returned by python into a JS array
+			data = data.replaceAll('\\[', '');
+			data = data.replaceAll('\\]', '');
+			data = data.replaceAll('\\"', '');
+			data = data.replaceAll(' ', '');
+			data = data.split(',');
+
+			// Display number of words found
+			numberOfWords = data.length
+			console.log("Number of found words: " + numberOfWords)
+			$('#numberOfWords').html('<strong>' + numberOfWords + ' found!' + '<strong')
+			
+			// Find max length of words found
+			let maxLength = 0
+			data.forEach(function (word) {
+				if (word.length > maxLength) {
+					maxLength = word.length;
+				}
+			});
+			console.log("Max word length is: " + maxLength)
+
+			// create 2 Dimensional array to hold words, based on length
+			// There is an array for each length of word, from 0 to maxLength
+			// 2 letter words, 3 letter words, etc.
+			var allArrays = new Array(maxLength);
+			for (i = 0; i < maxLength+1; i++) { 
+				allArrays[i] = new Array();
+				data.forEach(function (word) {
+					if (word.length == i) {
+						allArrays[i].push(word);
+					}
+				});
+			};
+			console.log(allArrays);
+
+			// find which arrays have words in them and append them to #results
+			let counter = 0
+			allArrays.forEach(function (array) {
+				console.log(counter + " letter words:");
+				console.log(array);
+				if (array.length != 0) {
+					$('#results').append(counter + " letter words: <br>")
+					$('#results').append(array + '<br>')
+				}
+				counter++;
+
+			});
+
+		}
+	</script>
+
+</body>
+
+</html>
