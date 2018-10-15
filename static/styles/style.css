@@ -32,7 +32,7 @@ font-family: 'Open Sans', sans-serif;
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #fff;
+    background: rgb(0, 0, 0);
     margin: -3px 0 0 -3px;
   }
   .lds-roller div:nth-child(1) {
