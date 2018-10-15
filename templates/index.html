@@ -53,8 +53,10 @@
 			$('#results').html('');
 			var query = $('#search').val();
 			e.preventDefault();
+
+			let ajaxURL = window.location.href + 'scrabble/'
 			$.ajax({
-				url: 'https://scrabbler2.herokuapp.com/scrabble/',
+				url: ajaxURL,
 				data: { 'letters': query },
 				method: 'POST',
 				success: function (data) {
