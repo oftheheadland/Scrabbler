@@ -66,9 +66,24 @@ function handleData(data) {
     allArrays.forEach(function (array) {
         console.log(counter + " letter words:");
         console.log(array);
+        var currentResults = $('#results' + counter);
+        console.log(currentResults);
+        console.log('above');
         if (array.length != 0) {
-            $('#results').append(counter + " letter words: <br>")
-            $('#results').append(array + '<br>')
+            if(currentResults.length < 1){
+                // window['divResults' + counter]
+                var itemResults = document.createElement('div');
+                itemResults.id = 'flex-item--results' + counter;
+                document.body.appendChild(itemResults);
+                console.log('below');
+                console.log(itemResults);
+            }
+            $(itemResults).append('<div class="flex-item--header">'+ counter + ' letter words: <br> </div>');
+            for(i in array){
+                $(itemResults).append('<li>' +  array[i]  + '</li>');
+                console.log(array[i]);
+            }
+            $('#flex-row').append($(itemResults));
         }
         counter++;
     });

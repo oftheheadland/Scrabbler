@@ -1,7 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Nunito:400,700);
+
+
+html{
+  font-family: 'Nunito', sans-serif;
+}
 
 body{
-background: #f2f2f2;
+background: #ffffff;
 font-family: 'Open Sans', sans-serif;
 }
 
@@ -11,6 +17,44 @@ font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     color: rgb(50, 138, 197);
     letter-spacing: 0.10em;
+}
+
+li{
+  list-style: none;
+  text-align: center;
+  font-size: 1vw;
+}
+
+
+[id^="flex-item--results"]{
+  width: 200px;
+  background-color: rgb(69, 182, 154);
+  border-left: 2px solid  rgb(69, 182, 154);
+  border-right: 2px solid rgb(69, 182, 154);
+  border-bottom: 2px solid rgb(69, 182, 154);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  line-height: 1.4;
+  color: #444444;
+  margin-bottom: 60px;
+}
+
+.flex-item--header{
+  background-color: rgb(56, 139, 119);
+  border: 2px solid rgb(56, 139, 119);
+  border-radius: 8px;
+  color: #444444;
+  line-height: 1.6;
+  font-weight: 700;
+  text-align: center;
+  padding: 15px;
+  font-size: 1.2vw;
+}
+
+#flex-row{
+  justify-content: space-around;
+  flex-flow: row wrap;
+  display: flex;
 }
 
 
