@@ -3,6 +3,7 @@ $('#form').on('submit', function (e) {
     $('#resultsHeader').html('');
     $('#numberOfWords').html('');
     $('#results').html('');
+    $('#flex-row').html("")
     var query = $('#search').val();
     e.preventDefault();
 
@@ -12,7 +13,7 @@ $('#form').on('submit', function (e) {
         data: { 'letters': query },
         method: 'POST',
         success: function (data) {
-            $('#search').val('');
+            
             $('#resultsHeader').html('Possible words for ' + query.toUpperCase() + ': <br>')
             handleData(data);
         }
