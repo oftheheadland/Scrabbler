@@ -18,20 +18,20 @@
 </style>
 </head>
 
-<body style="background-color: rgb(198, 208, 211)">
+<body style="background-color: #f3f3f3;">
 
 
 	<div class="container">
-		<div class="jumbotron" style="text-align: center">
+		<div class="jumbotron" style="text-align: center; background-color:#261035; color:white;">
 		  <h1>Scrabbler</h1>      
 		  <p>Enter some letters and click search to start!</p>
 		  <p>This website uses the official list of valid Scrabble words and calculates all possible words based on input.</p>
 		</div>
 		<div>
 		<form method="post" id="form">
-			<label for="search">Enter letters : </label>
+			<label for="search"><strong>Enter letters</strong> : </label>
 			<input type="text" id="search" name="characters" autofocus autocomplete="off" spellcheck="false">
-			<button>Search</button>
+			<button type="submit" class="btn btn-dark" style="margin-bottom: 9px;">Submit</button>
 		</form>
 	
 		<div id="loading" style="display: none;" class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>

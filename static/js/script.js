@@ -1,4 +1,9 @@
 $('#form').on('submit', function (e) {
+    if ($('#search').val() === "") {
+    console.log("true")
+    e.preventDefault();
+    }
+    else{
     $('#loading').show()
     $('#resultsHeader').html('');
     $('#numberOfWords').html('');
@@ -18,6 +23,7 @@ $('#form').on('submit', function (e) {
             handleData(data);
         }
     })
+    }
 })
 
 String.prototype.replaceAll = function (search, replacement) {
