@@ -69,8 +69,8 @@ function handleData(data) {
     console.log(allArrays);
 
     // find which arrays have words in them and append them to #results
-    let counter = 0
-    allArrays.forEach(function (array) {
+    let counter = allArrays.length - 1
+    allArrays.reverse().forEach(function (array) {
         console.log(counter + " letter words:");
         console.log(array);
         var currentResults = $('#results' + counter);
@@ -92,7 +92,7 @@ function handleData(data) {
             }
             $('#flex-row').append($(itemResults));
         }
-        counter++;
+        counter--;
     });
     $('#loading').hide()
 }
