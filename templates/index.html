@@ -8,14 +8,16 @@
 			font-family: sans-serif;
 		}
 	</style>
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css"
+		href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles/style.css') }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<style>
 
-</style>
+	</style>
 </head>
 
 <body style="background-color: #f3f3f3;">
@@ -23,34 +25,45 @@
 
 	<div class="container">
 		<div class="jumbotron" style="text-align: center; background-color:#261035; color:white;">
-		  <h1>Scrabbler</h1>      
-		  <p>Enter some letters and click search to start!</p>
-		  <p>This website uses the official list of valid Scrabble words and calculates all possible words based on input.</p>
+			<h1>Scrabbler</h1>
+			<p>Enter some letters and click search to start!</p>
+			<p>This website uses the official list of valid Scrabble words and calculates all possible words based on
+				input.</p>
+			<h2>Hi Mom! Love you! ♥</h2>
 		</div>
 		<div>
-		<form method="post" id="form">
-			<label for="search"><strong>Enter letters</strong> : </label>
-			<input type="text" id="search" name="characters" autofocus autocomplete="off" spellcheck="false">
-			<button type="submit" class="btn btn-dark" style="margin-bottom: 9px;">Submit</button>
-		</form>
-	
-		<div id="loading" style="display: none;" class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-	
-		<p id="resultsHeader"></p>
-		<p id="numberOfWords"></p>
-		<p id="flex-row"></p>
+			<form method="post" id="form">
+				<label for="search"><strong>Enter letters</strong> : </label>
+				<input type="text" id="search" name="characters" autofocus autocomplete="off" spellcheck="false">
+				<button type="submit" class="btn btn-dark" style="margin-bottom: 9px;">Submit</button>
+			</form>
+
+			<div id="loading" style="display: none;" class="lds-roller">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+
+			<p id="resultsHeader"></p>
+			<p id="numberOfWords"></p>
+			<p id="flex-row"></p>
+		</div>
+
+
 	</div>
 
 
-	  </div>
-	  
 
 
 
-	
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="{{ url_for('static', filename='js/script.js') }}">
-	
+
 	</script>
 
 </body>
